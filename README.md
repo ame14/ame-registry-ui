@@ -1,2 +1,2 @@
 # mer-ui
-react ui for extension registry
+React ui for extension registry
