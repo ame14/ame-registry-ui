@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://amecontainers.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_aa22de1e85df4ac684a1cc051c74d410 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_e8f3c5fe99b54dd4a1861b5798e9b840 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername}}
+        password: ${{ secrets.AzureAppService_ContainerPassword}}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: amecontainers.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_aa22de1e85df4ac684a1cc051c74d410 }}/ameui:${{ github.sha }}
+        tags: amecontainers.azurecr.io/${{ secrets.AzureAppService_ContainerUsername}}/ameui:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -48,4 +48,4 @@ jobs:
         app-name: 'ameui'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_0a628964d91f42dba5cc63205953080d }}
-        images: 'amecontainers.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_aa22de1e85df4ac684a1cc051c74d410 }}/ameui:${{ github.sha }}'
+        images: 'amecontainers.azurecr.io/${{ secrets.AzureAppService_ContainerUsername}}/ameui:${{ github.sha }}'
