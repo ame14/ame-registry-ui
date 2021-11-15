@@ -24,7 +24,7 @@ function userAuthenticated() {
       localStorage.clear();
       return false;
     })
-
+  // TODO only return true after user logs in
   return true;
 }
 
