@@ -8,6 +8,8 @@ import Navbar from './navbar/Navbar'
 import api from './Api';
 import AuthUi from './auth/AuthUi.js';
 import EmptyNav from './navbar/EmptyNav';
+import ExtensionList from './extension/ExtensionList';
+import Instance from './instance/Instance';
 
 function userAuthenticated() {
 
@@ -29,8 +31,6 @@ function userAuthenticated() {
 }
 
 function App() {
-
-  // if their is no user authenticated, only route to register and login pages
   if (!userAuthenticated()) {
     return (
       <div class="container-fluid">
@@ -38,7 +38,7 @@ function App() {
           <EmptyNav />
         </div>
         <div class="row">
-        <AuthUi />
+          <AuthUi />
         </div>
       </div>
     )
@@ -51,6 +51,14 @@ function App() {
           <Navbar />
         </div>
         <div class="row">
+          <Route path="/extensions">
+            <ExtensionList />
+          </Route>
+        </div>
+        <div class="row">
+          <Route path="/instances">
+            <Instance />
+          </Route>
         </div>
       </div>
     </BrowserRouter>
