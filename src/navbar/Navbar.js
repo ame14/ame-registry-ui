@@ -19,6 +19,12 @@ class NavBar extends React.Component {
           <a class="navbar-brand" href="#">AME</a>
           <div class="d-flex">
             <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/instances">My Instances</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/extensions">Browse Extensions</a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link" onClick={this.logout} aria-current="page" href="#">Logout</a>
               </li>
