@@ -11,7 +11,6 @@ class Register extends React.Component {
   }
 
   handleSubmit(event) {
-
     // if token is set clear it, before we try to login
     localStorage.clear();
 
@@ -40,7 +39,6 @@ class Register extends React.Component {
   }
 
   render() {
-
     let errorDiv;
     if (this.state.errorMessage) {
       errorDiv = (<div class="row">

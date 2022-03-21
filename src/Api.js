@@ -5,7 +5,6 @@ const api = axios.create({
     baseURL: apiURL
 })
 
-
 //request interceptor to add the auth token header to requests
 api.interceptors.request.use(req => {
     // refresh token every 10 mins using current token
