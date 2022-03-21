@@ -9,7 +9,7 @@ import api from './Api';
 import AuthUi from './auth/AuthUi.js';
 import EmptyNav from './navbar/EmptyNav';
 import ExtensionList from './extension/ExtensionList';
-import Instance from './instance/Instance';
+import InstanceList from './instance/InstanceList';
 
 function userAuthenticated() {
 
@@ -57,7 +57,7 @@ function App() {
         </div>
         <div class="row">
           <Route path="/instances">
-            <Instance />
+            <InstanceList />
           </Route>
         </div>
       </div>
