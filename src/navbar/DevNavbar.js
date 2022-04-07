@@ -16,12 +16,9 @@ class DevNavBar extends React.Component {
     return (
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">AME</a>
+          <a class="navbar-brand"  href="/">AME</a>
           <div class="d-flex">
             <ul class="navbar-nav">
-            {/* <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/manage">Manage extensions</a>
-              </li> */}
             <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="/register">Register Extension</a>
               </li>

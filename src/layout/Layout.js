@@ -11,6 +11,7 @@ import ExtensionList from '../extension/ExtensionList';
 import InstanceList from '../instance/InstanceList';
 import RegisterExtension from '../extension/RegisterExtension';
 import reactRouterDom from "react-router-dom";
+import Home from "../home/Home";
 class Layout extends React.Component {
 
     constructor(props) {
@@ -37,14 +38,24 @@ class Layout extends React.Component {
     render() {
 
         if (this.state.user === null) {
-            return (<div class="container-fluid">
-                <div class="row">
-                    <EmptyNav />
+            return <BrowserRouter>
+                <div class="container-fluid">
+                    <div class="row">
+                        <EmptyNav />
+                    </div>
+                    <Route exact path="/">
+                        <div class="row">
+                            <Home />
+                        </div>
+                    </Route>
+                    <Route  path="/login">
+                        <div class="row">
+                        <AuthUi />
+                        </div>
+                    </Route>
                 </div>
-                <div class="row">
-                    <AuthUi />
-                </div>
-            </div>);
+            </BrowserRouter>
+        
         }
 
         const userRoles = this.state.user.roles;
@@ -54,7 +65,11 @@ class Layout extends React.Component {
                     <div class="row">
                         <Navbar />
                     </div>
-
+                    <Route exact path="/">
+                        <div class="row">
+                            <Home />
+                        </div>
+                    </Route>
                     <Route path="/extensions">
                         <div class="row">
                             <ExtensionList />
@@ -74,6 +89,11 @@ class Layout extends React.Component {
                     <div class="row">
                         <DevNavBar />
                     </div>
+                    <Route exact path="/">
+                        <div class="row">
+                            <Home />
+                        </div>
+                    </Route>
                     <Route path="/register">
                         <div class="row">
                             <RegisterExtension />
