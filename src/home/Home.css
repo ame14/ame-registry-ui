@@ -1,0 +1,44 @@
+img, svg {
+    vertical-align: bottom;
+}
+#graph{
+    height: 100px;
+    width: 100%;
+    background-image: url("./images/line-graph-1-what-is.png")
+}
+
+#projectTitle { 
+  font-size: xx-large;
+  font-weight: bold;
+}
+#titleContainer{
+  background-image: url('https://cdn.dribbble.com/users/2258871/screenshots/5637981/galaxy_dribbble.gif');
+  background-size: cover;
+  background-position: bottom;
+}
+.link:hover{
+  background-color: white;
+  color: black;
+}
+.contributor-picture{
+  height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 5px;
+
+}
+#contributor-dave{
+  background-image: url('./images/white.png');
+  
+}
+
+#contributor-john{
+  background-image: url('./images/red.png');
+}
+
+
+.md-doc .row {
+  margin: auto;
+  
+} 

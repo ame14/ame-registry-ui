@@ -12,11 +12,12 @@ class NavBar extends React.Component {
     localStorage.clear();
     window.location = "/login"
   }
+  
   render() {
     return (
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">AME</a>
+          <a class="navbar-brand" href="/">AME</a>
           <div class="d-flex">
             <ul class="navbar-nav">
             <li class="nav-item">
