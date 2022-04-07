@@ -34,7 +34,7 @@ class ExtensionList extends React.Component {
                                     <h4> <strong>{e.name}</strong> </h4>
                                 </div>
                                 <div class="col-5 text-end text-muted">
-                                    by {e.additional.developerEmail} 
+                                    by {e.additional.developerEmail}
                                 </div> </div>
                             <div class="row" style={{ 'height': '150px' }}>
                                 <div class="col p-4">
@@ -48,7 +48,7 @@ class ExtensionList extends React.Component {
                                         <div class="p-2 ps-3 pe-3 border me-2" > Executions: {e.additional.executionCount}</div>
                                         <div class="p-2 ps-3 pe-3 border me-2"> Instances : {e.additional.instanceCount}</div>
                                         <button class="btn btn-primary p-2 ps-3 pe-3 border me-2">  View More </button>
-                                        <button class="btn btn-primary p-2 ps-3 pe-3 border me-2" onClick={()=>this.instantiate(e.id)}>  Create Instance </button>
+                                        <button class="btn btn-primary p-2 ps-3 pe-3 border me-2" onClick={() => this.instantiate(e.id)}>  Create Instance </button>
                                     </div>
                                 </div>
                             </div>

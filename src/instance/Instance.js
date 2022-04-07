@@ -17,15 +17,20 @@ class Instance extends React.Component {
         this.createCopy = this.createCopy.bind(this)
         this.updateInstanceName = this.updateInstanceName.bind(this)
     }
-
+    
     createCopy(e) {
+        e.preventDefault();
 
         const copy = {
-            description: e.target["description"].value,
+            description: e.target["copyName"].value,
             instanceId: this.state.instance.id
         }
 
-        api.post("/instance/create/copy", copy).then(() => { window.location.reload() });
+        api.post("/instance/create/copy", copy).then((r) => { 
+            // clear the text field used to input the name of the copy
+            e.target['copyName'].value = ""
+            this.setState({instance : r.data});
+        });
     }
 
     renderStatus(s) {
@@ -56,7 +61,14 @@ class Instance extends React.Component {
     formatDate(d) {
         return (new Date(d * 1000).toTimeString().substring(0, 5) + " " + new Date(d * 1000).toDateString().substring(0, 10))
     }
-
+    deleteCopy(e){
+        
+        api.post("/instance/delete/copy?id="+e.id ).then((r) => { 
+            // clear the text field used to input the name of the copy
+  
+            this.setState({instance : r.data});
+        });
+    }
     renderCopies() {
         return this.state.instance.copies.map((e, i) => {
             let lastExecuted = "Never executed";
@@ -70,11 +82,11 @@ class Instance extends React.Component {
                 <td>{lastExecuted}</td>
                 <td>{e.executions.length}</td>
                 <td>{this.formatDate(e.creationDate)}</td>
-                <td><button class="btn border w-100 "> Delete </button></td> {/*TODO*/}
+                <td><button onClick={() => this.deleteCopy(e)}  class="btn border w-100 "> Delete </button></td> {/*TODO*/}
             </tr>
                 <tr>
                     <td colspan="7">  <CodeBlock
-                        text={"<iframe width='100%' height='100%W' src='http://localhost:8080/instance/run/" + e.id + "'> </iframe>"}
+                        text={"<iframe style='height: 100%; width: 100%;' frameborder='0' scrolling='no'  src='http://localhost:8080/instance/run/" + e.id + "'> </iframe>"}
                         language="java"
                         theme={"obsidian"}
                         showLineNumbers={false}
@@ -124,7 +136,6 @@ class Instance extends React.Component {
                 <div class="row mt-4">
                     <div class="col"> <h5> Instance Key </h5> </div>
                 </div>
-
                 <div class="row">
                     <div class="col text-muted"> This key can be used to access and edit data for this instance. It is often required by third party editors. </div>
                 </div>
@@ -139,7 +150,7 @@ class Instance extends React.Component {
                 </div>
                 <form onSubmit={this.createCopy}>
                     <div class="row mt-3">
-                        <div class="col-8"> <input id="description" placeholder="Name for this copy" required class="form-control" type="text" /> </div>
+                        <div class="col-8"> <input id="copyName" placeholder="Name for this copy" required class="form-control" type="text" /> </div>
                         <div class="col-4"> <input required class="form-control" type="submit" value="Create Copy" /> </div>
                     </div>
                 </form>
@@ -195,11 +206,10 @@ class Instance extends React.Component {
                             <div class="p-2 ps-3 pe-3 border me-2" > Created One: {this.formatDate(this.state.instance.createDate)}</div>
                             <div class="p-2 ps-3 pe-3 border me-2"> Status : {this.renderStatus(this.state.instance.state)} </div>
                             <div class="p-2 ps-3 pe-3 border me-2"> Number of Copies : {this.state.instance.copies.length} </div>
-                            <div class="p-2 ps-3 pe-3 border me-2"> Number of Executions : {this.state.instance.executionCount}  </div>
+                            <div class="p-2 ps-3 pe-3 border me-2"> Number of Executions : {this.state.instance.additional.executionCount}  </div>
                         </div>
                     </div>
                 </div>
-
                 {manageDiv}
             </div>
         </div>)
